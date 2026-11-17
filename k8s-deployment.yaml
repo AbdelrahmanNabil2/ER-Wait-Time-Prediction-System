@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: er-wait-time-api
+  labels:
+    app: er-wait-time-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: er-wait-time-api
+  template:
+    metadata:
+      labels:
+        app: er-wait-time-api
+    spec:
+      containers:
+      - name: er-wait-time-api
+        image: er-wait-time-api:v1.0
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8000
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8000
+          initialDelaySeconds: 10
+          periodSeconds: 30
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 3
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"

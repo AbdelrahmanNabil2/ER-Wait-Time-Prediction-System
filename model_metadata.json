@@ -1,0 +1,34 @@
+{
+  "feature_columns": [
+    "triage_level",
+    "age",
+    "num_doctors_available",
+    "queue_length",
+    "is_weekend",
+    "arrival_hour",
+    "arrival_day_of_week",
+    "arrival_month",
+    "arrival_day",
+    "is_rush_hour",
+    "doctor_patient_ratio",
+    "dept_General",
+    "tod_afternoon",
+    "tod_evening",
+    "tod_morning",
+    "tod_night"
+  ],
+  "model_version": "1.0",
+  "training_date": "2025-12-14",
+  "metrics": {
+    "regression": {
+      "test_mae": 23.279177818937303,
+      "test_rmse": 35.569928622626236,
+      "test_r2": 0.7144540862254181
+    },
+    "classification": {
+      "test_accuracy": 0.883,
+      "test_f1": 0.8753993610223643,
+      "test_auc": 0.9680038720154881
+    }
+  }
+}
