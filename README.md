@@ -1,27 +1,26 @@
-# ?? ER Wait Time Prediction
+# ER Wait Time Prediction
 
 ### Cloud-Native Machine Learning System for Emergency Room Wait Time Forecasting
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
   <img src="https://img.shields.io/badge/FastAPI-0.104.1-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" />
-  <img src="https://img.shields.io/badge/XGBoost-2.0.0-FF6600?style=for-the-badge&logo=xgboost&logoColor=white" alt="XGBoost" />
+  <img src="https://img.shields.io/badge/XGBoost-2.0.0-FF6600?style=for-the-badge" alt="XGBoost" />
   <img src="https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
   <img src="https://img.shields.io/badge/Kubernetes-Deployed-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white" alt="Kubernetes" />
   <img src="https://img.shields.io/badge/Streamlit-1.29-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit" />
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/R²-0.714-success?style=flat-square" alt="R2" />
+  <img src="https://img.shields.io/badge/R%C2%B2-0.714-success?style=flat-square" alt="R2" />
   <img src="https://img.shields.io/badge/MAE-23.3%20min-blue?style=flat-square" alt="MAE" />
   <img src="https://img.shields.io/badge/ROC--AUC-0.968-brightgreen?style=flat-square" alt="AUC" />
   <img src="https://img.shields.io/badge/HPA-1--5%20pods-326CE5?style=flat-square" alt="HPA" />
-  <img src="https://img.shields.io/badge/License-Academic-lightgrey?style=flat-square" alt="License" />
 </p>
 
 ---
 
-Predict exact ER wait times, flag long-wait risk, and return prediction intervals — served by a production FastAPI backend, interactive Streamlit UIs, and Docker + Kubernetes with health probes and autoscaling.
+Predict exact ER wait times, flag long-wait risk, and return prediction intervals â€” served by a production FastAPI backend, interactive Streamlit UIs, and Docker + Kubernetes with health probes and autoscaling.
 
 | | |
 |---|---|
@@ -32,38 +31,38 @@ Predict exact ER wait times, flag long-wait risk, and return prediction interval
 
 ---
 
-## ?? Table of Contents
+## Table of Contents
 
-- [Overview](#-overview)
-- [Key Features](#-key-features)
-- [Architecture](#-architecture)
-- [Project Structure](#-project-structure)
-- [Dataset & Features](#-dataset--features)
-- [Machine Learning](#-machine-learning)
-- [Model Performance](#-model-performance)
-- [Quick Start](#-quick-start)
-- [API Reference](#-api-reference)
-- [User Interfaces](#-user-interfaces)
-- [Docker Deployment](#-docker-deployment)
-- [Kubernetes Deployment](#-kubernetes-deployment)
-- [Health Checks & Autoscaling](#-health-checks--autoscaling)
-- [Testing](#-testing)
-- [Figures](#-figures)
-- [Documentation](#-documentation)
-- [Tech Stack](#-tech-stack)
-- [Roadmap / Notes](#-roadmap--notes)
+- [Overview](#overview)
+- [Key Features](#key-features)
+- [Architecture](#architecture)
+- [Project Structure](#project-structure)
+- [Dataset & Features](#dataset--features)
+- [Machine Learning](#machine-learning)
+- [Model Performance](#model-performance)
+- [Quick Start](#quick-start)
+- [API Reference](#api-reference)
+- [User Interfaces](#user-interfaces)
+- [Docker Deployment](#docker-deployment)
+- [Kubernetes Deployment](#kubernetes-deployment)
+- [Health Checks & Autoscaling](#health-checks--autoscaling)
+- [Testing](#testing)
+- [Figures](#figures)
+- [Documentation](#documentation)
+- [Tech Stack](#tech-stack)
+- [Notes](#notes)
 
 ---
 
-## ?? Overview
+## Overview
 
-Long, uncertain Emergency Room waits hurt patients and operations. This project delivers a full **ML ? API ? UI ? cloud** pipeline:
+Long, uncertain Emergency Room waits hurt patients and operations. This project delivers a full **ML â†’ API â†’ UI â†’ cloud** pipeline:
 
-1. **Regression** — predict wait time in minutes  
-2. **Risk scoring** — LOW / MEDIUM / HIGH from predicted wait  
-3. **Uncertainty** — 25th / 50th / 75th percentile intervals via quantile regression  
-4. **Production serving** — FastAPI with liveness & readiness probes  
-5. **Cloud orchestration** — Docker multi-stage image + Kubernetes HPA (1–5 pods)
+1. **Regression** â€” predict wait time in minutes
+2. **Risk scoring** â€” LOW / MEDIUM / HIGH from predicted wait
+3. **Uncertainty** â€” 25th / 50th / 75th percentile intervals via quantile regression
+4. **Production serving** â€” FastAPI with liveness & readiness probes
+5. **Cloud orchestration** â€” Docker multi-stage image + Kubernetes HPA (1â€“5 pods)
 
 ### Why it matters
 
@@ -76,103 +75,103 @@ Long, uncertain Emergency Room waits hurt patients and operations. This project 
 
 ---
 
-## ? Key Features
+## Key Features
 
 | Feature | Description |
 |---------|-------------|
-| ?? **Dual prediction** | Exact wait (regression) + long-wait flag (>15 min) |
-| ?? **Uncertainty bands** | Quantile models for 25th–75th percentile intervals |
-| ? **Real-time API** | FastAPI + Uvicorn with interactive Swagger docs |
-| ??? **3 Streamlit apps** | Predict · Compare scenarios · Monitor K8s |
-| ?? **Optimized Docker image** | Multi-stage build (~320 MB) |
-| ?? **K8s-ready** | Deployment, Service (NodePort 30080), HPA |
-| ?? **Health probes** | `/healthz` (liveness) · `/ready` (readiness) |
-| ?? **Autoscaling** | CPU target 50%, scale 1 ? 5 pods |
+| **Dual prediction** | Exact wait (regression) + long-wait flag (>15 min) |
+| **Uncertainty bands** | Quantile models for 25thâ€“75th percentile intervals |
+| **Real-time API** | FastAPI + Uvicorn with interactive Swagger docs |
+| **3 Streamlit apps** | Predict Â· Compare scenarios Â· Monitor K8s |
+| **Optimized Docker image** | Multi-stage build (~320 MB) |
+| **K8s-ready** | Deployment, Service (NodePort 30080), HPA |
+| **Health probes** | `/healthz` (liveness) Â· `/ready` (readiness) |
+| **Autoscaling** | CPU target 50%, scale 1 â†’ 5 pods |
 
 ---
 
-## ??? Architecture
+## Architecture
 
 ```text
-???????????????????????????????????????????????????????????????????
-?                     Streamlit User Interfaces                    ?
-?   :8501 Prediction  ?  :8502 K8s Dashboard  ?  :8503 Scenarios   ?
-???????????????????????????????????????????????????????????????????
-                             ? HTTP
-                             ?
-???????????????????????????????????????????????????????????????????
-?                     FastAPI  (port 8000)                         ?
-?   /predict  /models  /healthz  /ready  /health  /docs            ?
-???????????????????????????????????????????????????????????????????
-                             ?
-          ???????????????????????????????????????
-          ?                  ?                  ?
-   XGBoost Regressor   Quantile 25/50/75   Feature Scaler
-          ?                  ?                  ?
-          ???????????????????????????????????????
-                             ?
-              Docker Container  ?  Kubernetes Pods + HPA
++------------------------------------------------------------------+
+|                    Streamlit User Interfaces                     |
+|  :8501 Prediction  |  :8502 K8s Dashboard  |  :8503 Scenarios    |
++-------------------------------+----------------------------------+
+                                | HTTP
+                                v
++------------------------------------------------------------------+
+|                     FastAPI  (port 8000)                         |
+|   /predict  /models  /healthz  /ready  /health  /docs            |
++-------------------------------+----------------------------------+
+                                |
+          +---------------------+---------------------+
+          v                     v                     v
+   XGBoost Regressor     Quantile 25/50/75      Feature Scaler
+          |                     |                     |
+          +---------------------+---------------------+
+                                |
+               Docker Container  ->  Kubernetes Pods + HPA
 ```
 
 **Inference flow**
 
-1. Client sends patient features to `POST /predict`  
-2. API engineers temporal & operational features (16 columns)  
-3. Features are scaled with `StandardScaler`  
-4. Regressor returns wait minutes; quantiles build the interval  
-5. Risk level + long-wait probability are attached to the JSON response  
+1. Client sends patient features to `POST /predict`
+2. API engineers temporal & operational features (16 columns)
+3. Features are scaled with `StandardScaler`
+4. Regressor returns wait minutes; quantiles build the interval
+5. Risk level + long-wait probability are attached to the JSON response
 
 ---
 
-## ?? Project Structure
+## Project Structure
 
 ```text
 .
-??? README.md                      # This file
-??? .gitignore
-??? requirements.txt               # Python dependencies
-??? Dockerfile                     # Multi-stage production image
-?
-??? main.py                        # FastAPI application
-??? streamlit_app.py               # Prediction GUI (:8501)
-??? k8s_dashboard.py               # Cluster monitor (:8502)
-??? scenario_comparison.py         # Scenario compare (:8503)
-??? test_api.py                    # API smoke tests
-??? fastapi_template.py            # Generated API template
-?
-??? xgboost_regressor.pkl          # Primary wait-time model
-??? xgboost_classifier.pkl         # Classification artifact
-??? xgboost_quantile_25.pkl        # Lower bound (P25)
-??? xgboost_quantile_50.pkl        # Median (P50)
-??? xgboost_quantile_75.pkl        # Upper bound (P75)
-??? feature_scaler.pkl             # StandardScaler
-??? model_metadata.json            # Metrics & feature list
-?
-??? k8s-deployment.yaml            # Deployment + probes
-??? k8s-service.yaml               # NodePort 30080
-??? k8s-hpa.yaml                   # Autoscaler 1–5 @ 50% CPU
-?
-??? start_app.sh / start_app.bat   # Local API + UI
-??? start_all.sh / newRun.sh       # Full stack helpers
-??? deploy.sh                      # Docker / K8s lifecycle CLI
-?
-??? data/
-?   ??? ER Wait Time Dataset.csv   # Training dataset (~5k rows)
-??? notebook/
-?   ??? cloud-project-v2.ipynb     # Full ML training pipeline
-??? figures/                       # EDA & evaluation plots
-??? kubernetes/                    # Extra K8s notes
-??? docs/                          # Extended documentation
-    ??? DEPLOYMENT_GUIDE.md
-    ??? PROJECT_DOCUMENTATION.md
-    ??? KUBERNETES_DEPLOYMENT.md
-    ??? Cloud Project Documentation.docx
-    ??? Project_Presentation.pptx
+|-- README.md                      # This file
+|-- .gitignore
+|-- requirements.txt               # Python dependencies
+|-- Dockerfile                     # Multi-stage production image
+|
+|-- main.py                        # FastAPI application
+|-- streamlit_app.py               # Prediction GUI (:8501)
+|-- k8s_dashboard.py               # Cluster monitor (:8502)
+|-- scenario_comparison.py         # Scenario compare (:8503)
+|-- test_api.py                    # API smoke tests
+|-- fastapi_template.py            # Generated API template
+|
+|-- xgboost_regressor.pkl          # Primary wait-time model
+|-- xgboost_classifier.pkl         # Classification artifact
+|-- xgboost_quantile_25.pkl        # Lower bound (P25)
+|-- xgboost_quantile_50.pkl        # Median (P50)
+|-- xgboost_quantile_75.pkl        # Upper bound (P75)
+|-- feature_scaler.pkl             # StandardScaler
+|-- model_metadata.json            # Metrics & feature list
+|
+|-- k8s-deployment.yaml            # Deployment + probes
+|-- k8s-service.yaml               # NodePort 30080
+|-- k8s-hpa.yaml                   # Autoscaler 1-5 @ 50% CPU
+|
+|-- start_app.sh / start_app.bat   # Local API + UI
+|-- start_all.sh / newRun.sh       # Full stack helpers
+|-- deploy.sh                      # Docker / K8s lifecycle CLI
+|
+|-- data/
+|   `-- ER Wait Time Dataset.csv   # Training dataset (~5k rows)
+|-- notebook/
+|   `-- cloud-project-v2.ipynb     # Full ML training pipeline
+|-- figures/                       # EDA & evaluation plots
+|-- kubernetes/                    # Extra K8s notes
+`-- docs/                          # Extended documentation
+    |-- DEPLOYMENT_GUIDE.md
+    |-- PROJECT_DOCUMENTATION.md
+    |-- KUBERNETES_DEPLOYMENT.md
+    |-- Cloud Project Documentation.docx
+    `-- Project_Presentation.pptx
 ```
 
 ---
 
-## ?? Dataset & Features
+## Dataset & Features
 
 **Source:** ER Wait Time Dataset (Kaggle-style simulation)  
 **Size:** ~5,000 visits  
@@ -183,11 +182,11 @@ Long, uncertain Emergency Room waits hurt patients and operations. This project 
 | Field | Type | Range / Values | Description |
 |-------|------|----------------|-------------|
 | `arrival_time` | string | `YYYY-MM-DD HH:MM:SS` | Arrival timestamp |
-| `triage_level` | int | 1–5 | 1 = most urgent |
-| `age` | int | 0–120 | Patient age |
+| `triage_level` | int | 1â€“5 | 1 = most urgent |
+| `age` | int | 0â€“120 | Patient age |
 | `department` | string | General / Cardiac / Pediatric / Trauma | ER unit |
-| `num_doctors_available` | int | 0–20 | Doctors on shift |
-| `queue_length` | int | 0–300 | Patients waiting |
+| `num_doctors_available` | int | 0â€“20 | Doctors on shift |
+| `queue_length` | int | 0â€“300 | Patients waiting |
 | `is_weekend` | int | 0 / 1 | Weekend flag |
 
 ### Engineered features (16 used in production)
@@ -199,7 +198,7 @@ Long, uncertain Emergency Room waits hurt patients and operations. This project 
 | **Derived** | `doctor_patient_ratio` = doctors / (queue + 1) |
 | **Encoded** | `dept_General`, `tod_morning`, `tod_afternoon`, `tod_evening`, `tod_night` |
 
-**Rush hour:** 09:00–11:00 or 18:00–20:00  
+**Rush hour:** 09:00â€“11:00 or 18:00â€“20:00
 
 ### Top feature importance (XGBoost)
 
@@ -215,20 +214,20 @@ Long, uncertain Emergency Room waits hurt patients and operations. This project 
 
 ---
 
-## ?? Machine Learning
+## Machine Learning
 
 Training lives in [`notebook/cloud-project-v2.ipynb`](notebook/cloud-project-v2.ipynb).
 
 ### Pipeline
 
-1. Load & clean dataset  
-2. EDA (distributions, correlations, categoricals)  
-3. Feature engineering (time, rush hour, ratios, one-hots)  
-4. Time-aware train/test split (~80/20)  
-5. Train regression baselines + **XGBoost**  
-6. Train classification baselines + **XGBoost**  
-7. Fit **quantile** models (? = 0.25 / 0.50 / 0.75)  
-8. Export `.pkl` artifacts + `model_metadata.json`  
+1. Load & clean dataset
+2. EDA (distributions, correlations, categoricals)
+3. Feature engineering (time, rush hour, ratios, one-hots)
+4. Time-aware train/test split (~80/20)
+5. Train regression baselines + **XGBoost**
+6. Train classification baselines + **XGBoost**
+7. Fit **quantile** models (alpha = 0.25 / 0.50 / 0.75)
+8. Export `.pkl` artifacts + `model_metadata.json`
 
 ### Models shipped
 
@@ -242,21 +241,21 @@ Training lives in [`notebook/cloud-project-v2.ipynb`](notebook/cloud-project-v2.
 
 ### Serving logic (`POST /predict`)
 
-| Output | How it’s computed |
-|--------|-------------------|
+| Output | How it is computed |
+|--------|--------------------|
 | `predicted_wait_time` | XGBoost regressor |
 | `is_long_wait` | Wait **> 15** minutes |
 | `long_wait_probability` | Sigmoid of distance from 15-min threshold |
-| `risk_level` | `<10` LOW · `10–20` MEDIUM · `?20` HIGH |
-| `prediction_interval` | Quantile models (fallback ±30% if missing) |
+| `risk_level` | `<10` LOW Â· `10â€“20` MEDIUM Â· `â‰¥20` HIGH |
+| `prediction_interval` | Quantile models (fallback Â±30% if missing) |
 
 ---
 
-## ?? Model Performance
+## Model Performance
 
 ### Regression (wait time in minutes)
 
-| Model | MAE ? | RMSE ? | R² ? |
+| Model | MAE â†“ | RMSE â†“ | RÂ² â†‘ |
 |-------|------:|-------:|-----:|
 | Linear Regression | 33.24 | 48.52 | 0.618 |
 | Random Forest | 25.81 | 38.94 | 0.713 |
@@ -275,29 +274,30 @@ On average, predictions land within **~23 minutes** of true wait; the model expl
 
 | Percentile | Meaning |
 |------------|---------|
-| **25th** | Lower bound — ~25% of similar cases wait less |
+| **25th** | Lower bound â€” ~25% of similar cases wait less |
 | **50th** | Median estimate |
-| **75th** | Upper bound — ~75% of similar cases wait less |
+| **75th** | Upper bound â€” ~75% of similar cases wait less |
 
-**Example interval:** 13 – 24 minutes ? “About half of similar patients wait in this range.”
+**Example interval:** 13â€“24 minutes â†’ â€œAbout half of similar patients wait in this range.â€
 
 ---
 
-## ?? Quick Start
+## Quick Start
 
 ### Prerequisites
 
 | Tool | Required? | Notes |
 |------|-----------|-------|
-| Python 3.9+ | ? | Core runtime |
-| `pip` | ? | Install deps |
+| Python 3.9+ | Yes | Core runtime |
+| `pip` | Yes | Install deps |
 | Docker Desktop | Optional | Containers + local K8s |
 | `kubectl` | Optional | Cluster deploy / dashboard |
 
 ### 1) Install
 
 ```bash
-cd github-upload   # or clone this repository
+git clone https://github.com/AbdelrahmanNabil2/Cloud-Project-ER-Wait-Time-Prediction-.git
+cd Cloud-Project-ER-Wait-Time-Prediction-
 pip install -r requirements.txt
 ```
 
@@ -317,7 +317,7 @@ python main.py
 
 ```bash
 streamlit run streamlit_app.py
-# ? http://localhost:8501
+# -> http://localhost:8501
 ```
 
 ### One-command local stack
@@ -336,14 +336,14 @@ start_app.bat
 
 ---
 
-## ?? API Reference
+## API Reference
 
 ### Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
 | `GET` | `/` | API info & endpoint list |
-| `GET` | `/healthz` | Liveness probe ? `{"status":"healthy"}` |
+| `GET` | `/healthz` | Liveness probe â†’ `{"status":"healthy"}` |
 | `GET` | `/health` | Per-model load status |
 | `GET` | `/ready` | Readiness (503 if core models missing) |
 | `GET` | `/models` | Version, training date, metrics |
@@ -394,17 +394,17 @@ curl -X POST "http://localhost:8000/predict" \
 
 | Level | Predicted wait | Meaning |
 |-------|----------------|---------|
-| **LOW** | &lt; 10 min | Short expected wait |
-| **MEDIUM** | 10–20 min | Moderate wait |
-| **HIGH** | ? 20 min | Long wait — prioritize resources |
+| **LOW** | < 10 min | Short expected wait |
+| **MEDIUM** | 10â€“20 min | Moderate wait |
+| **HIGH** | â‰¥ 20 min | Long wait â€” prioritize resources |
 
 ---
 
-## ??? User Interfaces
+## User Interfaces
 
 | App | Port | Command | Purpose |
 |-----|------|---------|---------|
-| **Prediction GUI** | 8501 | `streamlit run streamlit_app.py` | Interactive patient form ? live `/predict` |
+| **Prediction GUI** | 8501 | `streamlit run streamlit_app.py` | Interactive patient form â†’ live `/predict` |
 | **K8s Dashboard** | 8502 | `streamlit run k8s_dashboard.py` | Pods, services, HPA, logs via `kubectl` |
 | **Scenario Comparison** | 8503 | `streamlit run scenario_comparison.py` | Side-by-side best / busy / rush / critical cases |
 
@@ -412,7 +412,7 @@ All UIs expect the API at `http://localhost:8000` by default.
 
 ---
 
-## ?? Docker Deployment
+## Docker Deployment
 
 ### Build & run
 
@@ -427,7 +427,7 @@ docker run -d --name er-api -p 8000:8000 er-wait-time-api:v1.0
 | Property | Value |
 |----------|-------|
 | Base | `python:3.9-slim` |
-| Build | Multi-stage (deps in builder ? slim runtime) |
+| Build | Multi-stage (deps in builder â†’ slim runtime) |
 | Size | ~320 MB |
 | Port | `8000` |
 | Healthcheck | `GET /healthz` every 30s |
@@ -437,7 +437,7 @@ docker run -d --name er-api -p 8000:8000 er-wait-time-api:v1.0
 
 ---
 
-## ?? Kubernetes Deployment
+## Kubernetes Deployment
 
 Assumes a local cluster (e.g. Docker Desktop Kubernetes) and a locally built image (`imagePullPolicy: Never`).
 
@@ -453,11 +453,11 @@ kubectl get pods,svc,hpa
 |----------|----------------|
 | Deployment | `er-wait-time-api` |
 | Image | `er-wait-time-api:v1.0` |
-| Service | NodePort **30080** ? container `8000` |
+| Service | NodePort **30080** â†’ container `8000` |
 | CPU request / limit | 100m / 500m |
 | Memory request / limit | 256Mi / 512Mi |
 
-**Access:** http://localhost:30080  
+**Access:** http://localhost:30080
 
 Helper CLI:
 
@@ -470,7 +470,7 @@ Helper CLI:
 
 ---
 
-## ?? Health Checks & Autoscaling
+## Health Checks & Autoscaling
 
 ### Probes
 
@@ -493,7 +493,7 @@ Under load, Kubernetes adds pods automatically; when idle, it scales back down.
 
 ---
 
-## ?? Testing
+## Testing
 
 ```bash
 # With API running on :8000
@@ -513,7 +513,7 @@ curl http://localhost:8000/models
 
 ---
 
-## ??? Figures
+## Figures
 
 Training & evaluation plots (from the notebook):
 
@@ -539,7 +539,7 @@ Training & evaluation plots (from the notebook):
 
 ---
 
-## ?? Documentation
+## Documentation
 
 | Document | Description |
 |----------|-------------|
@@ -551,7 +551,7 @@ Training & evaluation plots (from the notebook):
 
 ---
 
-## ??? Tech Stack
+## Tech Stack
 
 | Layer | Technologies |
 |-------|----------------|
@@ -560,7 +560,7 @@ Training & evaluation plots (from the notebook):
 | **API** | FastAPI 0.104, Uvicorn, Pydantic 2 |
 | **UI** | Streamlit 1.29, Plotly 5.18 |
 | **Containers** | Docker (multi-stage, `python:3.9-slim`) |
-| **Orchestration** | Kubernetes Deployment · Service · HPA · metrics-server |
+| **Orchestration** | Kubernetes Deployment Â· Service Â· HPA Â· metrics-server |
 | **Training** | Jupyter notebook |
 
 ### `requirements.txt`
@@ -581,20 +581,20 @@ plotly==5.18.0
 
 ---
 
-## ?? Roadmap / Notes
+## Notes
 
-- Classifier artifact is loaded for readiness; live `/predict` risk uses the regressor + 15-minute threshold.  
-- Department encoding currently emphasizes `dept_General` in the production feature vector.  
-- Long-wait threshold in the serving API is **15 minutes** (notebook experiments may use other cutoffs).  
+- Classifier artifact is loaded for readiness; live `/predict` risk uses the regressor + 15-minute threshold.
+- Department encoding currently emphasizes `dept_General` in the production feature vector.
+- Long-wait threshold in the serving API is **15 minutes** (notebook experiments may use other cutoffs).
 - For cloud clusters (GKE / EKS / AKS), push the image to a registry and set `imagePullPolicy: Always`.
 
 ---
 
-## ?? Author
+## Author
 
 **Abdelrahman Nabil**  
-Cloud Computing / ML project — December 2025  
+Cloud Computing / ML project â€” December 2025
 
 <p align="center">
-  <sub>Built with FastAPI · XGBoost · Docker · Kubernetes</sub>
+  <sub>Built with FastAPI Â· XGBoost Â· Docker Â· Kubernetes</sub>
 </p>
